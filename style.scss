@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+$sd: 600px;
+$md: 994px;
+
+@mixin sd {
+  @media screen and (max-width: $sd) {
+    @content;
+  }
+}
+@mixin md {
+  @media screen and (max-width: $md) {
+    @content;
+  }
+}
+
+//Colors
+//Text
+$Very-dark-desaturated-blue: hsl(238, 29%, 16%);
+$Soft-red: hsl(14, 88%, 65%);
+$Dark-grayish-blue: hsl(240, 6%, 50%);
+
+//Gradient
+$Soft-violet: hsl(273, 75%, 66%);
+$Soft-blue: hsl(240, 73%, 65%);
+
+//Dividers
+$Light-grayish-blue: hsl(240, 5%, 91%);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  color: $Very-dark-desaturated-blue;
+  font-size: 0.8rem;
+}
+
+main {
+  min-height: 100vh;
+  background-image: linear-gradient($Soft-violet, $Soft-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  background: white;
+  border-radius: 2rem;
+  max-width: 60rem;
+  height: 34rem;
+  position: relative;
+  box-shadow: 0 2rem 6rem -2rem $Very-dark-desaturated-blue;
+  transition: 0.2s ease-in-out;
+
+  @include md {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  @include sd {
+    margin-top: 7rem;
+    grid-template-columns: 1fr;
+    min-height: 36rem;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    @include sd {
+      text-align: center;
+    }
+  }
+}
+
+.left-col {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center right 6rem
+      url("../images/illustration-woman-online-desktop.svg"),
+    no-repeat bottom -8rem right 6rem url("../images/bg-pattern-desktop.svg");
+  position: relative;
+
+  @include md {
+    background: no-repeat center right 2rem/150%
+        url("../images/illustration-woman-online-desktop.svg"),
+      no-repeat center right 2rem/150% url("../images/bg-pattern-desktop.svg");
+  }
+
+  @include sd {
+    position: absolute;
+    top: -14.7rem;
+    pointer-events: none;
+    background: no-repeat center 8rem
+        url("../images/illustration-woman-online-mobile.svg"),
+      no-repeat center center url("../images/bg-pattern-mobile.svg");
+  }
+
+  .img-box {
+    position: absolute;
+    left: -6rem;
+    bottom: 8.5rem;
+    transition: 0.2s;
+    animation: 1s bounce ease-in-out infinite;
+
+    @include md {
+      display: none;
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      bottom: 8.5rem;
+    }
+    50% {
+      bottom: 9rem;
+    }
+    0% {
+      bottom: 8.5rem;
+    }
+  }
+
+  .hover {
+    left: -8.2rem;
+
+    @include sd {
+      left: 0;
+    }
+  }
+}
+
+.right-col {
+  padding: 4rem 8rem 0 0;
+
+  @include md {
+    padding: 4rem 4rem 0 0;
+  }
+
+  @include sd {
+    margin-top: 8rem;
+    padding: 0 2rem;
+  }
+}
+
+.question {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid $Light-grayish-blue;
+  cursor: pointer;
+
+  &:hover {
+    color: $Soft-red;
+  }
+
+  .question-title {
+    display: flex;
+    justify-content: space-between;
+
+    h4 {
+      font-weight: 400;
+      font-size: .85rem;
+
+      @include sd {
+        font-size: .8rem;
+      }
+    }
+
+    i {
+      color: $Soft-red;
+      transition: all 0.2s ease;
+    }
+  }
+
+  p {
+    max-height: 0;
+    overflow: hidden;
+    line-height: 1.5;
+    color: $Dark-grayish-blue;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.active {
+  p {
+    margin-top: 1rem;
+    max-height: 5rem;
+  }
+
+  i {
+    transform: rotate(180deg);
+  }
+
+  h4 {
+    font-weight: 700 !important;
+  }
+}
