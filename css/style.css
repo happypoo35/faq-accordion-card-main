@@ -14,6 +14,7 @@ body {
 
 main {
   min-height: 100vh;
+  width: 100%;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#af67e9), to(#6565e7));
   background-image: linear-gradient(#af67e9, #6565e7);
   display: -webkit-box;
